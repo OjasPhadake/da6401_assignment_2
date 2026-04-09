@@ -1,0 +1,8 @@
+da6401_2/
+*.pth
+*.log
+*.csv
+*.json
+*.h5
+*.ckpt
+*.pt
