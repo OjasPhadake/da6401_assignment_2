@@ -4,7 +4,42 @@
 import torch
 import torch.nn as nn
 
+from .vgg11 import VGG11Encoder
+from .layers import CustomDropout
 
+class ClassificationHead(nn.Module):
+ 
+    def __init__(self, num_classes: int = 37, dropout_p: float = 0.5):
+        super().__init__()
+        self.head = nn.Sequential(
+            nn.Flatten(),
+ 
+            nn.Linear(512 * 7 * 7, 4096),
+            nn.ReLU(inplace=True),
+            nn.BatchNorm1d(4096),
+            CustomDropout(p=dropout_p),
+ 
+            nn.Linear(4096, 4096),
+            nn.ReLU(inplace=True),
+            nn.BatchNorm1d(4096),
+            CustomDropout(p=dropout_p),
+ 
+            nn.Linear(4096, num_classes),
+        )
+        self._init_weights()
+ 
+    def _init_weights(self):
+        for m in self.modules():
+            if isinstance(m, nn.Linear):
+                nn.init.xavier_uniform_(m.weight)
+                nn.init.zeros_(m.bias)
+            elif isinstance(m, nn.BatchNorm1d):
+                nn.init.ones_(m.weight)
+                nn.init.zeros_(m.bias)
+ 
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return self.head(x)
+    
 class VGG11Classifier(nn.Module):
     """Full classifier = VGG11Encoder + ClassificationHead."""
 
@@ -16,7 +51,11 @@ class VGG11Classifier(nn.Module):
             in_channels: Number of input channels.
             dropout_p: Dropout probability for the classifier head.
         """
-        pass
+        super().__init__()
+        self.encoder = VGG11Encoder(in_channels=in_channels)
+        self.head    = ClassificationHead(num_classes=num_classes,
+                                          dropout_p=dropout_p)
+        
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward pass for classification model.
@@ -25,5 +64,10 @@ class VGG11Classifier(nn.Module):
         Returns:
             Classification logits [B, num_classes].
         """
-        # TODO: Implement forward pass.
-        raise NotImplementedError("Implement VGG11Classifier.forward")
+        features = self.encoder(x, return_features=False)  # [B, 512, 7, 7]
+        logits   = self.head(features)                     # [B, num_classes]
+        return logits
+    
+    def get_encoder(self) -> VGG11Encoder:
+        """Return the shared convolutional backbone."""
+        return self.encoder
