@@ -19,9 +19,9 @@ def _conv_bn_relu(in_ch: int, out_ch: int) -> nn.Sequential:
 class VGG11Encoder(nn.Module):
     """VGG11-style encoder with optional intermediate feature returns.
     """
-    super().__init__()
     
     def __init__(self, in_channels: int = 3):
+        super().__init__()
         """Initialize the VGG11Encoder model."""
         
         # Stage 1
