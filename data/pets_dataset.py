@@ -168,26 +168,35 @@ class OxfordIIITPetDataset(Dataset):
 
         # ---- Apply transform ---------------------------------------------
         if self.transform is not None:
-            # Support both torchvision-style transforms (PIL→Tensor) and
-            # albumentations pipelines (numpy dict).
-            if hasattr(self.transform, "__call__"):
-                try:
-                    # albumentations: expects numpy arrays
-                    np_image = np.array(image)
-                    if self.load_mask and mask.numel() > 0:
-                        result = self.transform(
-                            image=np_image, mask=mask.numpy().astype(np.uint8)
-                        )
-                        image = result["image"]          # Tensor from ToTensorV2
-                        mask  = torch.from_numpy(
-                            result["mask"].astype(np.int64)
-                        )
+            np_image = np.array(image)
+
+            # Detect if it's albumentations (VERY IMPORTANT)
+            is_albu = hasattr(self.transform, "__class__") and \
+                    "albumentations" in self.transform.__class__.__module__
+
+            if is_albu:
+                if self.load_mask and mask.numel() > 0:
+                    result = self.transform(
+                        image=np_image,
+                        mask=mask.cpu().numpy().astype(np.uint8)
+                    )
+
+                    image = result["image"]
+
+                    # 🔥 FIX: handle both tensor + numpy safely
+                    if isinstance(result["mask"], np.ndarray):
+                        mask = torch.from_numpy(result["mask"]).long()
                     else:
-                        result = self.transform(image=np_image)
-                        image  = result["image"]
-                except (TypeError, KeyError):
-                    # Fallback: treat as torchvision transform on PIL
-                    image = self.transform(Image.fromarray(np_image))
+                        mask = result["mask"].long()
+
+                else:
+                    result = self.transform(image=np_image)
+                    image = result["image"]
+
+            else:
+                # torchvision-style transform
+                image = self.transform(image)
+
 
         return {
             "image": image,

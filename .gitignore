@@ -13,6 +13,11 @@ __pycache__/
 *.DS_Store
 *.egg-info/
 
-data/
+data/__pycache__/
+data/annotations/
+data/images/
+data/annotations.tar.gz
+data/images.tar.gz
+
 checkpoints/
 logs/
