@@ -42,6 +42,5 @@ class CustomDropout(nn.Module):
         output = x * mask / keep_prob
         return output
 
-def extra_repr(self) ->str:
-    # this function is used to print the layer when we print the model
-    return 'p={}'.format(self.p)
+    def extra_repr(self) -> str:
+        return 'p={}'.format(self.p)
