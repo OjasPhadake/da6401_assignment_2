@@ -1,0 +1,120 @@
+_wandb:
+    value:
+        cli_version: 0.24.2
+        e:
+            74x92hrk28b91wvh7dabzuhab27ls4vk:
+                args:
+                    - --classifier_ckpt
+                    - checkpoints/task1_best.pth
+                    - --localizer_ckpt
+                    - checkpoints/task2_best.pth
+                    - --unet_ckpt
+                    - checkpoints/task3_best.pth
+                codePath: train_multitask.py
+                codePathLocal: train_multitask.py
+                cpu_count: 64
+                cpu_count_logical: 128
+                cudaVersion: "12.7"
+                disk:
+                    /:
+                        total: "869372051456"
+                        used: "740793217024"
+                email: ch22b007@smail.iitm.ac.in
+                executable: /mnt/d_disk/ch22b007/da6401_assignment_2/da6401_2/bin/python
+                git:
+                    commit: 0c4740e53e3472378efa52ffbcd4c305fc7d8e41
+                    remote: https://github.com/OjasPhadake/da6401_assignment_2.git
+                gpu: NVIDIA RTX A6000
+                gpu_count: 4
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-fc493a51-424d-467b-6be6-d84561ed87fe
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-c580d581-3f3b-5207-f1aa-1517e6b85c3c
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-e4183f3e-2434-20e9-c949-2ff9ef943220
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-de949f50-4e82-a9d1-2360-41cea646b452
+                host: senaicluster
+                memory:
+                    total: "134889144320"
+                os: Linux-5.15.0-125-generic-x86_64-with-glibc2.29
+                program: train_multitask.py
+                python: CPython 3.8.10
+                root: /mnt/d_disk/ch22b007/da6401_assignment_2
+                startedAt: "2026-04-11T19:08:11.491326Z"
+                writerId: 74x92hrk28b91wvh7dabzuhab27ls4vk
+        m: []
+        python_version: 3.8.10
+        t:
+            "1":
+                - 1
+                - 5
+                - 53
+            "2":
+                - 1
+                - 5
+                - 53
+                - 80
+            "3":
+                - 16
+            "4": 3.8.10
+            "5": 0.24.2
+            "12": 0.24.2
+            "13": linux-x86_64
+batch_size:
+    value: 16
+ckpt_dir:
+    value: /mnt/d_disk/ch22b007/da6401_assignment_2/checkpoints
+classifier_ckpt:
+    value: checkpoints/task1_best.pth
+data_root:
+    value: /mnt/d_disk/ch22b007/da6401_assignment_2/data
+dropout_p:
+    value: 0.5
+epochs:
+    value: 20
+image_size:
+    value: 224
+localizer_ckpt:
+    value: checkpoints/task2_best.pth
+lr_backbone:
+    value: 0.0001
+lr_heads:
+    value: 0.001
+no_wandb:
+    value: false
+num_workers:
+    value: 4
+resume:
+    value: null
+run_name:
+    value: null
+seed:
+    value: 42
+unet_ckpt:
+    value: checkpoints/task3_best.pth
+val_split:
+    value: 0.1
+w_cls:
+    value: 1
+w_loc:
+    value: 1
+w_seg:
+    value: 1
+wandb_project:
+    value: da6401_a2_task4
+weight_decay:
+    value: 0.0001

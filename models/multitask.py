@@ -102,9 +102,9 @@ class MultiTaskPerceptionModel(nn.Module):
         num_breeds:      int = 37,
         seg_classes:     int = 3,
         in_channels:     int = 3,
-        classifier_path: str = "classifier.pth",
-        localizer_path:  str = "localizer.pth",
-        unet_path:       str = "unet.pth",
+        classifier_path: str = "../checkpoints/task1_best.pth",
+        localizer_path:  str = "../checkpoints/task2_best.pth",
+        unet_path:       str = "../checkpoints/task3_best.pth",
         image_size:      int = 224,
         dropout_p:       float = 0.5,
     ):
@@ -124,13 +124,13 @@ class MultiTaskPerceptionModel(nn.Module):
         # NOTE: gdown calls are inside __init__ as required by the skeleton.
         # Replace the placeholder Drive IDs below with your actual file IDs
         # before submission.
-        import gdown
-        gdown.download(id="<classifier.pth drive id>",
-                       output=classifier_path, quiet=False)
-        gdown.download(id="<localizer.pth drive id>",
-                       output=localizer_path,  quiet=False)
-        gdown.download(id="<unet.pth drive id>",
-                       output=unet_path,        quiet=False)
+        # import gdown
+        # gdown.download(id="<classifier.pth drive id>",
+        #                output=classifier_path, quiet=False)
+        # gdown.download(id="<localizer.pth drive id>",
+        #                output=localizer_path,  quiet=False)
+        # gdown.download(id="<unet.pth drive id>",
+        #                output=unet_path,        quiet=False)
 
         super().__init__()
 
