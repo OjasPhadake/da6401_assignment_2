@@ -6,3 +6,13 @@ da6401_2/
 *.h5
 *.ckpt
 *.pt
+__pycache__/
+*.ipynb_checkpoints
+*.vscode/
+*.idea/
+*.DS_Store
+*.egg-info/
+
+data/
+checkpoints/
+logs/
