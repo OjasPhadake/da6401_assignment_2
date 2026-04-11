@@ -124,13 +124,13 @@ class MultiTaskPerceptionModel(nn.Module):
         # NOTE: gdown calls are inside __init__ as required by the skeleton.
         # Replace the placeholder Drive IDs below with your actual file IDs
         # before submission.
-        # import gdown
-        # gdown.download(id="<classifier.pth drive id>",
-        #                output=classifier_path, quiet=False)
-        # gdown.download(id="<localizer.pth drive id>",
-        #                output=localizer_path,  quiet=False)
-        # gdown.download(id="<unet.pth drive id>",
-        #                output=unet_path,        quiet=False)
+        import gdown
+        gdown.download(id="1K3XEU26fbmLZcL8b215R2AAEWqGpdRR8",
+                       output=classifier_path, quiet=False)
+        gdown.download(id="1PTe_K_CjgcMLkOpU-GnJXm8ZQ35BEUx6",
+                       output=localizer_path,  quiet=False)
+        gdown.download(id="1P8g73QUmIAt6yXJjyeg5Zy7Ux1qVxnLR",
+                       output=unet_path,        quiet=False)
 
         super().__init__()
 

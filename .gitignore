@@ -19,5 +19,5 @@ data/images/
 data/annotations.tar.gz
 data/images.tar.gz
 
-checkpoints/
+checkpoints/*.pth
 logs/

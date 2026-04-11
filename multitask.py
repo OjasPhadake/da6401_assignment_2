@@ -101,15 +101,12 @@ class MultiTaskPerceptionModel(nn.Module):
         # disk it is not re-downloaded.
         # ------------------------------------------------------------------
         import gdown
-        # gdown.download(id="<classifier.pth drive id>",
-        #                output=classifier_path, quiet=False)
-        # gdown.download(id="<localizer.pth drive id>",
-        #                output=localizer_path,  quiet=False)
-        # gdown.download(id="<unet.pth drive id>",
-        #                output=unet_path,       quiet=False)
-        classifier_path = "checkpoints/task1_best.pth"
-        localizer_path  = "checkpoints/task2_best.pth"
-        unet_path       = "checkpoints/task3_best.pth"
+        gdown.download(id="1K3XEU26fbmLZcL8b215R2AAEWqGpdRR8", 
+                       output=classifier_path, quiet=False)
+        gdown.download(id="1PTe_K_CjgcMLkOpU-GnJXm8ZQ35BEUx6",
+                       output=localizer_path,  quiet=False)
+        gdown.download(id="1P8g73QUmIAt6yXJjyeg5Zy7Ux1qVxnLR",
+                       output=unet_path,       quiet=False)
 
         super().__init__()
 
