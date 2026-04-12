@@ -147,22 +147,21 @@ class MultiTaskPerceptionModel(nn.Module):
         # Input:  bottleneck [B, 512, 7, 7]
         # Output: bbox       [B, 4]  in pixel coords (Sigmoid × image_size)
         # ==================================================================
+
         self.loc_head = nn.Sequential(
-            nn.Flatten(),                                   # [B, 25088]
+            nn.AdaptiveAvgPool2d((1, 1)),   # 🔥 key change
+            nn.Flatten(),                   # [B, 512]
 
-            nn.Linear(512 * 7 * 7, 4096),
+            nn.Linear(512, 256),
             nn.ReLU(inplace=True),
-            nn.BatchNorm1d(4096),
-            CustomDropout(p=dropout_p),
+            nn.Dropout(p=0.3),
 
-            nn.Linear(4096, 512),
+            nn.Linear(256, 128),
             nn.ReLU(inplace=True),
-            nn.BatchNorm1d(512),
 
-            nn.Linear(512, 4),
-            nn.Sigmoid(),                                   # → (0, 1)
+            nn.Linear(128, 4),
+            nn.Sigmoid()
         )
-
         # ==================================================================
         # Head 3 — Segmentation decoder
         # Mirrors the decoder in VGG11UNet (models/segmentation.py) exactly:

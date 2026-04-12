@@ -145,13 +145,11 @@ class MultiTaskPerceptionModel(nn.Module):
         # Classification head  (mirrors ClassificationHead in classification.py)
         # ------------------------------------------------------------------
         self.cls_head = nn.Sequential(
+            nn.AdaptiveAvgPool2d((1, 1)),  # ← modern replacement
             nn.Flatten(),
-
-            nn.Linear(512 * 7 * 7, 512),
-            nn.BatchNorm1d(512),
+            nn.Linear(512, 512),
             nn.ReLU(inplace=True),
-            CustomDropout(p=dropout_p),
-
+            nn.Dropout(p=0.3),
             nn.Linear(512, num_breeds),
         )
 
