@@ -1,0 +1,86 @@
+_wandb:
+    value:
+        cli_version: 0.24.2
+        e:
+            t6xtu9lfy06410t2l0fftx15jfrc5vcy:
+                args:
+                    - --data_root
+                    - data
+                    - --unet_ckpt
+                    - checkpoints/task3_best.pth
+                    - --wandb_project
+                    - da6401_a2_report
+                codePath: wandb_2_6_segmentation_eval.py
+                codePathLocal: wandb_2_6_segmentation_eval.py
+                cpu_count: 64
+                cpu_count_logical: 128
+                cudaVersion: "12.7"
+                disk:
+                    /:
+                        total: "869372051456"
+                        used: "740962824192"
+                email: ch22b007@smail.iitm.ac.in
+                executable: /mnt/d_disk/ch22b007/da6401_assignment_2/da6401_2/bin/python
+                git:
+                    commit: 8c77d23d7f288f7505c3e92f380408607f7644c8
+                    remote: https://github.com/OjasPhadake/da6401_assignment_2.git
+                gpu: NVIDIA RTX A6000
+                gpu_count: 4
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-fc493a51-424d-467b-6be6-d84561ed87fe
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-c580d581-3f3b-5207-f1aa-1517e6b85c3c
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-e4183f3e-2434-20e9-c949-2ff9ef943220
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-de949f50-4e82-a9d1-2360-41cea646b452
+                host: senaicluster
+                memory:
+                    total: "134889144320"
+                os: Linux-5.15.0-125-generic-x86_64-with-glibc2.29
+                program: wandb_2_6_segmentation_eval.py
+                python: CPython 3.8.10
+                root: /mnt/d_disk/ch22b007/da6401_assignment_2
+                startedAt: "2026-04-12T09:21:37.524016Z"
+                writerId: t6xtu9lfy06410t2l0fftx15jfrc5vcy
+        m: []
+        python_version: 3.8.10
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+                - 80
+            "3":
+                - 2
+                - 13
+                - 16
+            "4": 3.8.10
+            "5": 0.24.2
+            "12": 0.24.2
+            "13": linux-x86_64
+data_root:
+    value: data
+image_size:
+    value: 224
+n_samples:
+    value: 5
+seed:
+    value: 42
+unet_ckpt:
+    value: checkpoints/task3_best.pth
+wandb_project:
+    value: da6401_a2_report
