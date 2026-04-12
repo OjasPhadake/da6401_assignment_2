@@ -54,8 +54,8 @@ def _conv_bn_relu(in_ch: int, out_ch: int) -> nn.Sequential:
     """Conv2d (3×3, same-pad, no bias) → ReLU → BN2d."""
     return nn.Sequential(
         nn.Conv2d(in_ch, out_ch, kernel_size=3, padding=1, bias=False),
-        nn.ReLU(inplace=True),
         nn.BatchNorm2d(out_ch),
+        nn.ReLU(inplace=True),
     )
 
 
@@ -125,7 +125,7 @@ class MultiTaskPerceptionModel(nn.Module):
         # Replace the placeholder Drive IDs below with your actual file IDs
         # before submission.
         import gdown
-        gdown.download(id="1d4iszrIO96YXxRBB7JSnKFrEC8PJtcHc",
+        gdown.download(id="1V3edOyGY1iNZkR0ow-qQDk945lRIe4T6",
                        output=classifier_path, quiet=False)
         gdown.download(id="1wZ6dpOiSI-naMgzPV95-ZJOG9uxaXGeS",
                        output=localizer_path,  quiet=False)

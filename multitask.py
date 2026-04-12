@@ -101,7 +101,7 @@ class MultiTaskPerceptionModel(nn.Module):
         # disk it is not re-downloaded.
         # ------------------------------------------------------------------
         import gdown
-        gdown.download(id="1d4iszrIO96YXxRBB7JSnKFrEC8PJtcHc", 
+        gdown.download(id="1V3edOyGY1iNZkR0ow-qQDk945lRIe4T6", 
                        output=classifier_path, quiet=False)
         gdown.download(id="1wZ6dpOiSI-naMgzPV95-ZJOG9uxaXGeS",
                        output=localizer_path,  quiet=False)
