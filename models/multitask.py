@@ -146,15 +146,13 @@ class MultiTaskPerceptionModel(nn.Module):
         # ------------------------------------------------------------------
         self.cls_head = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(512 * 7 * 7, 4096),
+
+            nn.Linear(512 * 7 * 7, 512),
+            nn.BatchNorm1d(512),
             nn.ReLU(inplace=True),
-            nn.BatchNorm1d(4096),
             CustomDropout(p=dropout_p),
-            nn.Linear(4096, 4096),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm1d(4096),
-            CustomDropout(p=dropout_p),
-            nn.Linear(4096, num_breeds),
+
+            nn.Linear(512, num_breeds),
         )
 
         # ------------------------------------------------------------------
@@ -162,13 +160,11 @@ class MultiTaskPerceptionModel(nn.Module):
         # ------------------------------------------------------------------
         self.loc_head = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(512 * 7 * 7, 4096),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm1d(4096),
-            CustomDropout(p=dropout_p),
-            nn.Linear(4096, 512),
+
+            nn.Linear(512 * 7 * 7, 512),
             nn.ReLU(inplace=True),
             nn.BatchNorm1d(512),
+
             nn.Linear(512, 4),
             nn.Sigmoid(),
         )
