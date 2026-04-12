@@ -125,11 +125,11 @@ class MultiTaskPerceptionModel(nn.Module):
         # Replace the placeholder Drive IDs below with your actual file IDs
         # before submission.
         import gdown
-        gdown.download(id="1K3XEU26fbmLZcL8b215R2AAEWqGpdRR8",
+        gdown.download(id="1d4iszrIO96YXxRBB7JSnKFrEC8PJtcHc",
                        output=classifier_path, quiet=False)
-        gdown.download(id="1PTe_K_CjgcMLkOpU-GnJXm8ZQ35BEUx6",
+        gdown.download(id="1wZ6dpOiSI-naMgzPV95-ZJOG9uxaXGeS",
                        output=localizer_path,  quiet=False)
-        gdown.download(id="1P8g73QUmIAt6yXJjyeg5Zy7Ux1qVxnLR",
+        gdown.download(id="1WPZd-LgIMHLNGCEQO9VnnZEeVOoVb4YF",
                        output=unet_path,        quiet=False)
 
         super().__init__()

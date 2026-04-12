@@ -12,19 +12,12 @@ class ClassificationHead(nn.Module):
     def __init__(self, num_classes: int = 37, dropout_p: float = 0.5):
         super().__init__()
         self.head = nn.Sequential(
+            nn.AdaptiveAvgPool2d((1, 1)),  # ← modern replacement
             nn.Flatten(),
- 
-            nn.Linear(512 * 7 * 7, 4096),
+            nn.Linear(512, 512),
             nn.ReLU(inplace=True),
-            nn.BatchNorm1d(4096),
-            CustomDropout(p=dropout_p),
- 
-            nn.Linear(4096, 4096),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm1d(4096),
-            CustomDropout(p=dropout_p),
- 
-            nn.Linear(4096, num_classes),
+            nn.Dropout(p=0.3),
+            nn.Linear(512, num_classes),
         )
         self._init_weights()
  

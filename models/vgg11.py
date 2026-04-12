@@ -12,8 +12,8 @@ def _conv_bn_relu(in_ch: int, out_ch: int) -> nn.Sequential:
     """Helper function to create a conv-batchnorm-relu block."""
     return nn.Sequential(
         nn.Conv2d(in_ch, out_ch, kernel_size=3, padding=1, bias=False),
-        nn.ReLU(inplace=True), 
         nn.BatchNorm2d(out_ch),
+        nn.ReLU(inplace=True), 
     )
     
 class VGG11Encoder(nn.Module):
